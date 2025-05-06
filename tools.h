@@ -1,10 +1,12 @@
-#include <Windows.h>
-
 #pragma once
+
+#define RtlOffsetToPointer(Module, Pointer) PBYTE(PBYTE(Module) + DWORD(Pointer))
 
 namespace Tools
 {
 
-	int AutoInject(LPSTR target_process, LPCSTR payload);
+	PVOID GetImageBase();
+	PBYTE ExtractDllFile(PBYTE module_base, PDWORD module_size);
+
 
 }
